@@ -19,23 +19,23 @@ function byellow(){
     echo -e "\033[33m\033[01m\033[05m$1\033[0m"
 }
 
-#ÅĞ¶ÏÏµÍ³
+#åˆ¤æ–­ç³»ç»Ÿ
 check_os(){
 if [ ! -e '/etc/redhat-release' ]; then
 	red "==============="
-	red " ½öÖ§³ÖCentOS7"
+	red " ä»…æ”¯æŒCentOS7"
 	red "==============="
 exit
 fi
 if  [ -n "$(grep ' 6\.' /etc/redhat-release)" ] ;then
 	red "==============="
-	red " ½öÖ§³ÖCentOS7"
+	red " ä»…æ”¯æŒCentOS7"
 	red "==============="
 exit
 fi
 if  [ -n "$(grep ' 8\.' /etc/redhat-release)" ] ;then
 	red "==============="
-	red " ½öÖ§³ÖCentOS7"
+	red " ä»…æ”¯æŒCentOS7"
 	red "==============="
 exit
 fi
@@ -58,16 +58,16 @@ disable_selinux(){
 
 check_domain(){
     green "======================="
-    yellow "ÇëÊäÈë°ó¶¨µ½±¾VPSµÄÓòÃû"
+    yellow "è¯·è¾“å…¥ç»‘å®šåˆ°æœ¬VPSçš„åŸŸå"
     green "======================="
     read your_domain
     real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
     local_addr=`curl ipv4.icanhazip.com`
     if [ $real_addr == $local_addr ] ; then
     		green "=========================================="
-		green "ÓòÃû½âÎöÕı³££¬¿ªÊ¼°²×°wordpress+v2ray_ws_tls"
-		green "ÄãÑ¡ÔñµÄÕâ¸ö·½Ê½£¬ÉÔÎ¢¸´ÔÓ£¬°²×°Ê±¼ä±È½Ï³¤"
-		green "ÇëÄÍĞÄµÈ´ı¡­¡­"
+		green "åŸŸåè§£ææ­£å¸¸ï¼Œå¼€å§‹å®‰è£…wordpress+v2ray_ws_tls"
+		green "ä½ é€‰æ‹©çš„è¿™ä¸ªæ–¹å¼ï¼Œç¨å¾®å¤æ‚ï¼Œå®‰è£…æ—¶é—´æ¯”è¾ƒé•¿"
+		green "è¯·è€å¿ƒç­‰å¾…â€¦â€¦"
 		green "=========================================="
 	sleep 1s
 		download_wp
@@ -78,27 +78,27 @@ check_domain(){
 		config_php
     	install_wp
 		green
-		green "v2ray°²×°ÒÑ¾­Íê³É"
+		green "v2rayå®‰è£…å·²ç»å®Œæˆ"
 		green 
-		green "===========ÅäÖÃ²ÎÊı============"
-		green "µØÖ·£º${your_domain}"
-		green "¶Ë¿Ú£º443"
-		green "uuid£º${v2uuid}"
-		green "¶îÍâid£º32"
-		green "¼ÓÃÜ·½Ê½£ºaes-128-gcm"
-		green "´«ÊäĞ­Òé£ºws"
-		green "±ğÃû£ºWP²©¿Í+V2ray"
-		green "Â·¾¶£º/${newpath}"
-		green "µ×²ã´«Êä£ºtls"
+		green "===========é…ç½®å‚æ•°============"
+		green "åœ°å€ï¼š${your_domain}"
+		green "ç«¯å£ï¼š443"
+		green "uuidï¼š${v2uuid}"
+		green "é¢å¤–idï¼š32"
+		green "åŠ å¯†æ–¹å¼ï¼šaes-128-gcm"
+		green "ä¼ è¾“åè®®ï¼šws"
+		green "åˆ«åï¼šWPåšå®¢+V2ray"
+		green "è·¯å¾„ï¼š/${newpath}"
+		green "åº•å±‚ä¼ è¾“ï¼štls"
 		green 
     else
         red "================================"
-		red "ÓòÃû½âÎöµØÖ·Óë±¾VPS IPµØÖ·²»Ò»ÖÂ"
-		red "±¾´Î°²×°Ê§°Ü£¬ÇëÈ·±£ÓòÃû½âÎöÕı³£"
+		red "åŸŸåè§£æåœ°å€ä¸æœ¬VPS IPåœ°å€ä¸ä¸€è‡´"
+		red "æœ¬æ¬¡å®‰è£…å¤±è´¥ï¼Œè¯·ç¡®ä¿åŸŸåè§£ææ­£å¸¸"
 		red "================================"
-		red "½Å±¾¼ì²âping ÓòÃû»ñÈ¡½âÎöIP£¬ ²¢"
-		red "Óë±¾»ú²éÑ¯µÄÍâÍøIP±È½Ï£¬Èô²»Ò»ÖÂ"
-		red "½«²»ÔÊĞí½øĞĞ°²×°¡£"
+		red "è„šæœ¬æ£€æµ‹ping åŸŸåè·å–è§£æIPï¼Œ å¹¶"
+		red "ä¸æœ¬æœºæŸ¥è¯¢çš„å¤–ç½‘IPæ¯”è¾ƒï¼Œè‹¥ä¸ä¸€è‡´"
+		red "å°†ä¸å…è®¸è¿›è¡Œå®‰è£…ã€‚"
 		red "================================"
     fi
 }
@@ -106,7 +106,7 @@ check_domain(){
 install_php7(){
 
     green "==============="
-    green " 1.°²×°±ØÒªÈí¼ş"
+    green " 1.å®‰è£…å¿…è¦è½¯ä»¶"
     green "==============="
     sleep 1
     yum -y install epel-release
@@ -115,7 +115,7 @@ install_php7(){
     echo
     echo
     green "=========="
-    green "2.°²×°PHP7"
+    green "2.å®‰è£…PHP7"
     green "=========="
     sleep 1
     rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
@@ -124,7 +124,7 @@ install_php7(){
     chkconfig php-fpm on
     if [ `yum list installed | grep php70 | wc -l` -ne 0 ]; then
         echo
-    	green "¡¾checked¡¿ PHP7°²×°³É¹¦"
+    	green "ã€checkedã€‘ PHP7å®‰è£…æˆåŠŸ"
 	echo
 	echo
 	sleep 2
@@ -135,7 +135,7 @@ install_php7(){
 install_mysql(){
 
     green "==============="
-    green "  3.°²×°MySQL"
+    green "  3.å®‰è£…MySQL"
     green "==============="
     sleep 1
     wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
@@ -144,7 +144,7 @@ install_mysql(){
     systemctl enable mysqld.service
     systemctl start  mysqld.service
     if [ `yum list installed | grep mysql-community | wc -l` -ne 0 ]; then
-    	green "¡¾checked¡¿ MySQL°²×°³É¹¦"
+    	green "ã€checkedã€‘ MySQLå®‰è£…æˆåŠŸ"
 		echo
 		echo
 		sleep 2
@@ -153,7 +153,7 @@ install_mysql(){
     echo
     echo
     green "==============="
-    green "  4.ÅäÖÃMySQL"
+    green "  4.é…ç½®MySQL"
     green "==============="
     sleep 2
     mysqlpasswd=$(cat /dev/urandom | head -1 | md5sum | head -c 8)
@@ -181,7 +181,7 @@ install_nginx(){
     echo
     echo
     green "==============="
-    green "  5.°²×°nginx"
+    green "  5.å®‰è£…nginx"
     green "==============="
     sleep 1
     wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz
@@ -261,11 +261,11 @@ server {
     index index.php index.html;
     ssl_certificate /etc/nginx/ssl/fullchain.cer; 
     ssl_certificate_key /etc/nginx/ssl/$your_domain.key;
-    #TLS °æ±¾¿ØÖÆ
+    #TLS ç‰ˆæœ¬æ§åˆ¶
     ssl_protocols   TLSv1.3;
     ssl_ciphers     TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256;
     ssl_prefer_server_ciphers   on;
-    # ¿ªÆô 1.3 0-RTT
+    # å¼€å¯ 1.3 0-RTT
     ssl_early_data  on;
     ssl_stapling on;
     ssl_stapling_verify on;
@@ -302,14 +302,14 @@ install_v2ray(){
     bash <(curl -L -s https://install.direct/go.sh)  
     cd /etc/v2ray/
     rm -f config.json
-    wget https://raw.githubusercontent.com/V2RaySSR/V2RaySSR/master/config.json
+    wget https://raw.githubusercontent.com/atrandys/v2ray-ws-tls/master/config.json
     v2uuid=$(cat /proc/sys/kernel/random/uuid)
     sed -i "s/aaaa/$v2uuid/;" config.json
     sed -i "s/mypath/$newpath/;" config.json
     systemctl restart v2ray.service
     systemctl enable v2ray.service
     
-    #Ôö¼Ó×ÔÆô¶¯½Å±¾
+    #å¢åŠ è‡ªå¯åŠ¨è„šæœ¬
 cat > /etc/rc.d/init.d/autov2ray<<-EOF
 #!/bin/sh
 #chkconfig: 2345 80 90
@@ -317,25 +317,26 @@ cat > /etc/rc.d/init.d/autov2ray<<-EOF
 /etc/nginx/sbin/nginx
 EOF
 
-    #ÉèÖÃ½Å±¾È¨ÏŞ
+    #è®¾ç½®è„šæœ¬æƒé™
     chmod +x /etc/rc.d/init.d/autov2ray
     chkconfig --add autov2ray
     chkconfig autov2ray on
 
 cat > /etc/v2ray/myconfig.json<<-EOF
 {
-===========ÅäÖÃ²ÎÊı=============
-µØÖ·£º${your_domain}
-¶Ë¿Ú£º443
-uuid£º${v2uuid}
-¶îÍâid£º32
-¼ÓÃÜ·½Ê½£ºaes-128-gcm
-´«ÊäĞ­Òé£ºws
-±ğÃû£ºWP²©¿Í+V2ray
-Â·¾¶£º/${newpath}
-µ×²ã´«Êä£ºtls
+===========é…ç½®å‚æ•°=============
+åœ°å€ï¼š${your_domain}
+ç«¯å£ï¼š443
+uuidï¼š${v2uuid}
+é¢å¤–idï¼š32
+åŠ å¯†æ–¹å¼ï¼šaes-128-gcm
+ä¼ è¾“åè®®ï¼šws
+åˆ«åï¼šWPåšå®¢+V2ray
+è·¯å¾„ï¼š/${newpath}
+åº•å±‚ä¼ è¾“ï¼štls
 }
 EOF
+
 
 }
 
@@ -343,7 +344,7 @@ config_php(){
 
     echo
     green "===================="
-    green " 6.ÅäÖÃphpºÍphp-fpm"
+    green " 6.é…ç½®phpå’Œphp-fpm"
     green "===================="
     echo
     echo
@@ -362,12 +363,12 @@ download_wp(){
     cd /usr/share/wordpresstemp/
     wget https://cn.wordpress.org/latest-zh_CN.zip
     if [ ! -f "/usr/share/wordpresstemp/latest-zh_CN.zip" ]; then
-    	red "´Ócn¹ÙÍøÏÂÔØwordpressÊ§°Ü£¬³¢ÊÔ´ÓgithubÏÂÔØ¡­¡­"
+    	red "ä»cnå®˜ç½‘ä¸‹è½½wordpresså¤±è´¥ï¼Œå°è¯•ä»githubä¸‹è½½â€¦â€¦"
 		wget https://github.com/atrandys/wordpress/raw/master/latest-zh_CN.zip    
     fi
     if [ ! -f "/usr/share/wordpresstemp/latest-zh_CN.zip" ]; then
-		red "ÎÒËüß÷µÄ´ÓgithubÏÂÔØwordpressÒ²Ê§°ÜÁË£¬Çë³¢ÊÔÓÃÏÂÃæµÄ·½Ê½ÊÖ¶¯°²×°¡­¡­"
-		grenn "´Ówordpress¹ÙÍøÏÂÔØ°üÈ»ºóÃüÃûÎªlatest-zh_CN.zip£¬ĞÂ½¨Ä¿Â¼/usr/share/wordpresstemp/£¬ÉÏ´«µ½´ËÄ¿Â¼ÏÂ£¬ÖØĞÂÖ´ĞĞ°²×°½Å±¾¼´¿É"
+		red "æˆ‘å®ƒå–µçš„ä»githubä¸‹è½½wordpressä¹Ÿå¤±è´¥äº†ï¼Œè¯·å°è¯•ç”¨ä¸‹é¢çš„æ–¹å¼æ‰‹åŠ¨å®‰è£…â€¦â€¦"
+		grenn "ä»wordpresså®˜ç½‘ä¸‹è½½åŒ…ç„¶åå‘½åä¸ºlatest-zh_CN.zipï¼Œæ–°å»ºç›®å½•/usr/share/wordpresstemp/ï¼Œä¸Šä¼ åˆ°æ­¤ç›®å½•ä¸‹ï¼Œé‡æ–°æ‰§è¡Œå®‰è£…è„šæœ¬å³å¯"
 		exit 1
     fi
 }
@@ -375,7 +376,7 @@ download_wp(){
 install_wp(){
 
     green "===================="
-    green "  7.°²×°wordpress"
+    green "  7.å®‰è£…wordpress"
     green "===================="
     echo
     echo
@@ -393,7 +394,7 @@ install_wp(){
     wget https://github.com/V2RaySSR/V2RaySSR/raw/master/Git-alpha.zip
     unzip Git-alpha.zip
     green "===================="
-    green "  8.ÅäÖÃwordpress"
+    green "  8.é…ç½®wordpress"
     green "===================="
     echo
     echo
@@ -402,15 +403,15 @@ install_wp(){
     echo "define('FS_METHOD', "direct");" >> /usr/share/nginx/html/wp-config.php
     chmod -R 777 /usr/share/nginx/html/wp-content
     green "==========================================================="
-    green " WordPress·şÎñ¶ËÅäÖÃÒÑÍê³É£¬Çë´ò¿ªä¯ÀÀÆ÷·ÃÎÊÄúµÄÓòÃû½øĞĞÇ°Ì¨ÅäÖÃ"
-    green " Êı¾İ¿âÃÜÂëµÈĞÅÏ¢²Î¿¼ÎÄ¼ş£º/usr/share/nginx/html/wp-config.php"
+    green " WordPressæœåŠ¡ç«¯é…ç½®å·²å®Œæˆï¼Œè¯·æ‰“å¼€æµè§ˆå™¨è®¿é—®æ‚¨çš„åŸŸåè¿›è¡Œå‰å°é…ç½®"
+    green " æ•°æ®åº“å¯†ç ç­‰ä¿¡æ¯å‚è€ƒæ–‡ä»¶ï¼š/usr/share/nginx/html/wp-config.php"
     green "==========================================================="
 }
 
 uninstall_wp(){
     red "============================================="
-    red "ÄãµÄwordpressºÍv2rayÊı¾İ½«È«²¿¶ªÊ§£¡£¡ÄãÈ·¶¨ÒªĞ¶ÔØÂğ£¿"
-    read -s -n1 -p "°´»Ø³µ¼ü¿ªÊ¼Ğ¶ÔØ£¬°´ctrl+cÈ¡Ïû"
+    red "ä½ çš„wordpresså’Œv2rayæ•°æ®å°†å…¨éƒ¨ä¸¢å¤±ï¼ï¼ä½ ç¡®å®šè¦å¸è½½å—ï¼Ÿ"
+    read -s -n1 -p "æŒ‰å›è½¦é”®å¼€å§‹å¸è½½ï¼ŒæŒ‰ctrl+cå–æ¶ˆ"
     yum remove -y php70w php70w-mysql php70w-gd php70w-xml php70w-fpm mysql
     rm -rf /usr/share/nginx/html/*
     rm -rf /var/lib/mysql
@@ -423,30 +424,25 @@ uninstall_wp(){
     rm -rf /etc/nginx
 	rm -rf /etc/rc.d/init.d/autov2ray
     green "=========="
-    green " Ğ¶ÔØÍê³É£¬ÈçĞèÖØĞÂ°²×°½¨ÒéÖØÆôºó½øĞĞ"
+    green " å¸è½½å®Œæˆï¼Œå¦‚éœ€é‡æ–°å®‰è£…å»ºè®®é‡å¯åè¿›è¡Œ"
     green "=========="
-}
-
-function bbr_boost_sh(){
-    wget -N --no-check-certificate -q -O tcp.sh "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && bash tcp.sh
 }
 
 start_menu(){
     clear
     green "=================================================="
-    green " ½éÉÜ£ºÊÊÓÃCentOS7£¬Ò»¼ü°²×°wordpress+v2ray_ws_tls"
-    green " ×÷Õß£ºatrandys - www.atrandys.com"
-    green " ĞŞ¸Ä£º²¨×Ğ"
-    green " Youtube£º²¨×Ğ·ÖÏí"
-    green " ²©¿Í£ºwww.v2rayssr.com"
-    green " ÒÑ¼¯³ÉÆÆ½âÖ÷Ìâ£ºD85.1¡¢DUX6.0¡¢GitÖ÷Ìâ£¨ÍÆ¼öÊ¹ÓÃ£©"
+    green " ä»‹ç»ï¼šé€‚ç”¨CentOS7ï¼Œä¸€é”®å®‰è£…wordpress+v2ray_ws_tls"
+    green " ä½œè€…ï¼šatrandys - www.atrandys.com"
+    green " ä¿®æ”¹ï¼šæ³¢ä»”"
+    green " Youtubeï¼šæ³¢ä»”åˆ†äº«"
+    green " åšå®¢ï¼šwww.v2rayssr.com"
+    green " å·²é›†æˆç ´è§£ä¸»é¢˜ï¼šD85.1ã€DUX6.0ã€Gitä¸»é¢˜ï¼ˆæ¨èä½¿ç”¨ï¼‰"
     green "=================================================="
-    green "1. °²×°wordpress+v2ray_ws_tls"
-    red "2. Ğ¶ÔØwordpress+v2ray_ws_tls"
-    green "3. °²×°BBRPlus4ºÏÒ»¼ÓËÙ"
-    yellow "0. ÍË³ö½Å±¾"
+    green "1. å®‰è£…wordpress+v2ray_ws_tls"
+    red "2. å¸è½½wordpress+v2ray_ws_tls"
+    yellow "0. é€€å‡ºè„šæœ¬"
     echo
-    read -p "ÇëÊäÈëÊı×Ö:" num
+    read -p "è¯·è¾“å…¥æ•°å­—:" num
     case "$num" in
     	1)
 		check_os
@@ -456,15 +452,12 @@ start_menu(){
 		2)
 		uninstall_wp
 		;;
-		3)
-		bbr_boost_sh
-		;;
 		0)
 		exit 1
 		;;
 		*)
 	clear
-	echo "ÇëÊäÈëÕıÈ·Êı×Ö"
+	echo "è¯·è¾“å…¥æ­£ç¡®æ•°å­—"
 	sleep 2s
 	start_menu
 	;;
