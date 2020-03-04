@@ -57,9 +57,12 @@ disable_selinux(){
 }
 
 check_domain(){
-    green "======================="
+    green "======================================="
     yellow "请输入绑定到本VPS的域名"
-    green "======================="
+    yellow "acme.sh证书申请脚本采用多域写法"
+    red "请输入主域名，例如xxx.com"
+    red "前面别加上www，切记，不然证书无效！"
+    green "======================================="
     read your_domain
     real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
     local_addr=`curl ipv4.icanhazip.com`
@@ -238,11 +241,10 @@ http {
     include /etc/nginx/conf.d/*.conf;
 }
 EOF
-	
 	/etc/nginx/sbin/nginx 
 
     curl https://get.acme.sh | sh
-    ~/.acme.sh/acme.sh  --issue  -d $your_domain  --webroot /usr/share/nginx/html/
+    ~/.acme.sh/acme.sh  --issue  -d $your_domain -d www.$your_domain  --webroot /usr/share/nginx/html/
     ~/.acme.sh/acme.sh  --installcert  -d  $your_domain   \
         --key-file   /etc/nginx/ssl/$your_domain.key \
         --fullchain-file /etc/nginx/ssl/fullchain.cer \
@@ -251,12 +253,12 @@ EOF
 cat > /etc/nginx/conf.d/default.conf<<-EOF
 server { 
     listen       80;
-    server_name  $your_domain;
+    server_name  $your_domain www.$your_domain;
     rewrite ^(.*)$  https://\$host\$1 permanent; 
 }
 server {
     listen 443 ssl http2;
-    server_name $your_domain;
+    server_name $your_domain www.$your_domain;
     root /usr/share/nginx/html;
     index index.php index.html;
     ssl_certificate /etc/nginx/ssl/fullchain.cer; 
