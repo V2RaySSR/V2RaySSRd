@@ -1,3 +1,5 @@
+#!/bin/bash
+ 
 function blue(){
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -82,11 +84,11 @@ check_domain(){
 		green "地址：${your_domain}"
 		green "端口：443"
 		green "uuid：${v2uuid}"
-		green "额外id：32"
+		green "额外id：64"
 		green "加密方式：aes-128-gcm"
 		green "传输协议：ws"
-		green "别名：WP博客+V2ray"
-		green "路径：/${newpath}"
+		green "别名：myws"
+		green "路径：${newpath}"
 		green "底层传输：tls"
 		green 
     else
@@ -326,11 +328,11 @@ cat > /etc/v2ray/myconfig.json<<-EOF
 地址：${your_domain}
 端口：443
 uuid：${v2uuid}
-额外id：32
+额外id：64
 加密方式：aes-128-gcm
 传输协议：ws
-别名：WP博客+V2ray
-路径：/${newpath}
+别名：myws
+路径：${newpath}
 底层传输：tls
 }
 EOF
@@ -384,13 +386,6 @@ install_wp(){
     unzip latest-zh_CN.zip
     mv wordpress/* ./
     cp wp-config-sample.php wp-config.php
-    cd /usr/share/nginx/html/wp-content/themes
-    wget https://github.com/V2RaySSR/V2RaySSR/raw/master/d8.zip
-    unzip d8.zip
-    wget https://github.com/V2RaySSR/V2RaySSR/raw/master/dux.zip
-    unzip dux.zip
-    wget https://github.com/V2RaySSR/V2RaySSR/raw/master/Git-alpha.zip
-    unzip Git-alpha.zip
     green "===================="
     green "  8.配置wordpress"
     green "===================="
@@ -430,11 +425,9 @@ start_menu(){
     clear
     green "=================================================="
     green " 介绍：适用CentOS7，一键安装wordpress+v2ray_ws_tls"
-    green " 作者：atrandys - www.atrandys.com"
-    green " 修改：波仔"
-    green " Youtube：波仔分享"
-    green " 博客：www.v2rayssr.com"
-    green " 已集成破解主题：D85.1、DUX6.0、Git主题（推荐使用）"
+    green " 作者：atrandys"
+    green " 网站：www.atrandys.com"
+    green " Youtube：Randy's 堡垒"
     green "=================================================="
     green "1. 安装wordpress+v2ray_ws_tls"
     red "2. 卸载wordpress+v2ray_ws_tls"
