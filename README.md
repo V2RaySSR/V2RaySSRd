@@ -11,6 +11,8 @@
  
  已集成破解主题：D85.1、DUX6.0、Git主题（推荐使用）
  
+ acme.sh的SSL证书申请为多域名适配，请输入绑定并解析的顶级域名（例：XXX.COM），请不要加上 www
+ 
 
 
 yum install -y wget && wget -O v2ray_ws_tls_wp.sh https://raw.githubusercontent.com/V2RaySSR/V2RaySSR/master/v2ray_ws_tls_wp.sh && sh v2ray_ws_tls_wp.sh
