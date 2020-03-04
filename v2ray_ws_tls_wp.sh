@@ -298,8 +298,7 @@ EOF
 }
 
 install_v2ray(){
-    
-    bash <(curl -L -s https://install.direct/go.sh)  
+    bash <(curl -L -s https://install.direct/go.sh)
     cd /etc/v2ray/
     rm -f config.json
     wget https://raw.githubusercontent.com/V2RaySSR/V2RaySSR/master/config.json
