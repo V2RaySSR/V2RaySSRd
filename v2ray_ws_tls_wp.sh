@@ -61,7 +61,9 @@ check_domain(){
     yellow "请输入绑定到本VPS的域名"
     yellow "acme.sh证书申请脚本采用多域写法"
     red "请输入主域名，例如xxx.com"
-    red "前面别加上www，切记，不然证书无效！"
+    green "前面不要加上www，切记！！切记！！切记！！"
+    yellow "前面不要加上www，切记！！切记！！切记！！"
+    red "前面不要加上www，切记！！切记！！切记！！"
     green "======================================="
     read your_domain
     real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
@@ -442,6 +444,11 @@ start_menu(){
     green " Youtube：波仔分享"
     green " 博客：www.v2rayssr.com"
     green " 已集成破解主题：D85.1、DUX6.0、Git主题（推荐使用）"
+    green "=================================================="
+    green "=================================================="
+    red "SSL申请过程为多域名适配，请看清楚任何相关提示！！"
+    red "acme.sh脚本SSL证书申请默认为 xxx.com 顶级域名格式"
+    red "输入域名必须输入 xxx.com 格式，不能有 www "
     green "=================================================="
     green "1. 安装wordpress+v2ray_ws_tls"
     red "2. 卸载wordpress+v2ray_ws_tls"
