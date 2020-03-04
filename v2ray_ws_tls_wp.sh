@@ -248,7 +248,7 @@ EOF
     ~/.acme.sh/acme.sh  --installcert  -d  $your_domain   \
         --key-file   /etc/nginx/ssl/$your_domain.key \
         --fullchain-file /etc/nginx/ssl/fullchain.cer \
-        --reloadcmd  "service nginx force-reload"
+        --reloadcmd  "/etc/nginx/sbin/nginx -s reload"
 	
 cat > /etc/nginx/conf.d/default.conf<<-EOF
 server { 
