@@ -302,7 +302,7 @@ install_v2ray(){
     bash <(curl -L -s https://install.direct/go.sh)  
     cd /etc/v2ray/
     rm -f config.json
-    wget https://raw.githubusercontent.com/V2RaySSR/V2RaySSR/master/config.json
+    wget https://raw.githubusercontent.com/atrandys/v2ray-ws-tls/master/config.json
     v2uuid=$(cat /proc/sys/kernel/random/uuid)
     sed -i "s/aaaa/$v2uuid/;" config.json
     sed -i "s/mypath/$newpath/;" config.json
@@ -336,6 +336,7 @@ uuid：${v2uuid}
 底层传输：tls
 }
 EOF
+
 
 }
 
